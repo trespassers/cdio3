@@ -1,6 +1,6 @@
 package gr_34.entity;
 /**
- * spillerklasse oprettes--
+ * spillerklasse oprettes
  * @author Sebastian
  *
  */
