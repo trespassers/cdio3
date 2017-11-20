@@ -15,13 +15,7 @@ public class Chancekort {
 	public String getNavn() {
 		return navn;
 	}
-	public void setNavn(String navn) {
-		this.navn = navn;
-	}
 	public String getTekst() {
 		return tekst;
-	}
-	public void setTekst(String tekst) {
-		this.tekst = tekst;
 	}
 }
