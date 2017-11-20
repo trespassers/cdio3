@@ -22,28 +22,20 @@ public class Spiller {
 		return navn;
 	}
 
-	public void setNavn(String navn) {
-		this.navn = navn;
-	}
-
 	public int getAlder() {
 		return alder;
 	}
-
-	public void setAlder(int alder) {
-		this.alder = alder;
-	}
-
+	
 	public Konto getKonto() {
 		return konto;
 	}
 
-	public void setKonto(Konto konto) {
-		this.konto = konto;
-	}
-
 	public Brik getBrik() {
 		return brik;
+	}
+
+	public String toString() {
+		return navn;
 	}
 
 }
