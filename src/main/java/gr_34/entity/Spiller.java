@@ -11,7 +11,7 @@ public class Spiller {
 	private Konto konto;
 	private Brik brik;
 	
-	public Spiller(String navn, int alder, Konto konto, Brik brik) {
+	public Spiller(String navn, int alder, Konto konto) {
 		this.navn = navn;
 		this.alder = alder;
 		this.konto = konto;
