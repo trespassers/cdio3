@@ -9,7 +9,6 @@ public class Chancekort {
 	private String tekst;
 	private ChancekortEffekt effekt;
 	
-	public Chancekort(String navn, String tekst) {
 	public Chancekort(String navn, String tekst, ChancekortEffekt effekt) {
 		this.navn = navn;
 		this.tekst = tekst;
