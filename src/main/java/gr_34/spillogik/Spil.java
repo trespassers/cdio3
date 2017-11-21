@@ -5,9 +5,9 @@
 package gr_34.spillogik;
 
 import gr_34.boundary.Spillebræt;
-import gr_34.boundary.Spillerliste;
 import gr_34.entity.Chancekort;
 import gr_34.entity.ChancekortBunke;
+import gr_34.entity.Spillerliste;
 import gr_34.entity.Terning;
 
 public class Spil {
