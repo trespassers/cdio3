@@ -5,8 +5,9 @@
 package gr_34.entity;
 
 public class Chancekort {
-	String navn;
-	String tekst;
+	private String navn;
+	private String tekst;
+	
 	public Chancekort(String navn, String tekst) {
 		super();
 		this.navn = navn;
