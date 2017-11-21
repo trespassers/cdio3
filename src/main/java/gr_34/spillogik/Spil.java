@@ -5,16 +5,17 @@
 package gr_34.spillogik;
 
 import gr_34.boundary.Spillebræt;
+import gr_34.boundary.Spillerliste;
 import gr_34.entity.Chancekort;
 import gr_34.entity.ChancekortBunke;
 import gr_34.entity.Terning;
 
 public class Spil {
-	private SpillerListe spillere;
+	private Spillerliste spillere;
 	private Spillebræt spillebræt;
 	private ChancekortBunke chancekortBunke;
 	
-	public Spil(SpillerListe spillere, Spillebræt spillebræt, ChancekortBunke chancekortBunke) {
+	public Spil(Spillerliste spillere, Spillebræt spillebræt, ChancekortBunke chancekortBunke) {
 		this.spillere = spillere;
 		this.spillebræt = spillebræt;
 		this.chancekortBunke = chancekortBunke;
