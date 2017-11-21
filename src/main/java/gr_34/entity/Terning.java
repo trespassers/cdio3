@@ -2,7 +2,7 @@ package gr_34.entity;
 
 /**
  * Terningklasse taget fra cdio1 og modificeret så den passer til vores
- * programspil.
+ * programspil...test
  * 
  * @author Andreas
  * @author Asef
@@ -11,7 +11,7 @@ package gr_34.entity;
  * @author Peter
  * @author Burhan
  * @author Sebastian
- *
+ * 
  */
 public class Terning {
 
