@@ -37,6 +37,7 @@ public class Spillebræt {
 		felter[21] = new GUI_Field(Color.white, Color.BLUE, "Hej", "hej","hej") {};
 		felter[22] = new GUI_Field(Color.white, Color.BLUE, "Hej", "hej","hej") {};
 		felter[23] = new GUI_Field(Color.white, Color.BLUE, "Hej", "hej","hej") {};
+		
 		new GUI_Board(felter);
 	}
 }

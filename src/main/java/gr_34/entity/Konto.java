@@ -31,5 +31,9 @@ public class Konto {
 		sum = getPenge()-beløb;
 		setPenge(sum);
 	}
+
+	public String toString() {
+		return "["+penge+"]";
+	}
 	
 }

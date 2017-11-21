@@ -9,7 +9,6 @@ public class Chancekort {
 	private String tekst;
 	
 	public Chancekort(String navn, String tekst) {
-		super();
 		this.navn = navn;
 		this.tekst = tekst;
 	}
