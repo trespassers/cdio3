@@ -4,8 +4,6 @@
  */
 package gr_34.entity;
 
-
-
 public class Chancekort {
 	private String navn;
 	private String tekst;
