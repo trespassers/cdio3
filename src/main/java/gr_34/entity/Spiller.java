@@ -52,7 +52,7 @@ public class Spiller {
 
 	@Override
 	public String toString() {
-		return "\t\nSpiller navn=" + navn + ", alder=" + alder + ", konto=" + konto + ", brik=" + brik;
+		return "\t\nSpiller: navn=" + navn + ", alder=" + alder + ", konto=" + konto + ", brik=" + brik;
 	}
 
 }
