@@ -30,7 +30,6 @@ public class Spillebræt {
 		felter[2] = new GUI_Street();
 		felter[2].setTitle("Pizzahuset");
 		felter[2].setSubText("M1");
-		felter[0].setSubText("Spillerstart");
 		felter[2].setBackGroundColor(Color.ORANGE);
 		
 		felter[3] = new GUI_Street();
