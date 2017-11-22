@@ -8,7 +8,7 @@ import gui_fields.GUI_Street;
 import gui_main.GUI;
 
 /**
- * Opretter spillebrættet for monopoly
+ * Opretter spillebrættet med felter for monopoly
  * @author Sebastian
  *
  */
