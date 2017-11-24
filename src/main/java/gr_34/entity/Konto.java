@@ -29,7 +29,10 @@ public class Konto {
 	public void fratrækPenge(int beløb) {
 		int sum;
 		sum = getPenge()-beløb;
-		setPenge(sum);
+		if (sum < 0) {
+			setPenge(0);
+		} else
+			setPenge(sum);
 	}
 
 	public String toString() {
