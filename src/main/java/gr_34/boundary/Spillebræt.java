@@ -36,6 +36,21 @@ public class Spillebræt {
 		felter[3].setTitle("Chance");
 		felter[3].setDescription("Chance");
 		
+		felter[4] = new GUI_Street();
+		felter[4].setTitle("Slikbutikken");
+		felter[4].setSubText("M1");
+		felter[4].setBackGroundColor(Color.BLUE);
+		
+		
+		felter[5] = new GUI_Street();
+		felter[5].setTitle("Iskiosken");
+		felter[5].setSubText("M1");
+		felter[5].setBackGroundColor(Color.BLUE);
+		
+		felter[6] = new GUI_Street();
+		felter[6].);
+		
+		
 		GUI gui = new GUI(felter);
 		gui.setDice(2, 4);
 	}
