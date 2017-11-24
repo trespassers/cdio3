@@ -10,7 +10,16 @@ public class Spiller {
 	private int alder;
 	private Konto konto;
 	private Brik brik;
+	private int position;
 	
+	public int getPosition() {
+		return position;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
 	public Spiller(String navn, int alder, Konto konto, Brik brik) {
 		this.navn = navn;
 		this.alder = alder;
