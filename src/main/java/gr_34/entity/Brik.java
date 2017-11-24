@@ -15,7 +15,7 @@ public class Brik {
 	private GUI_Car brik;
 	private Color farve1;
 	
-	public Brik(Color farve1, Color farve2) { //
+	public Brik(Color farve1, Color farve2) { 
 		this.farve1 = farve1;
 		brik = new GUI_Car(farve1, farve2, Type.CAR, Pattern.CHECKERED);
 	}
