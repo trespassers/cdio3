@@ -1,7 +1,5 @@
 package gr_34.boundary;
 
-import java.awt.Color;
-
 import gr_34.controller.Felter;
 import gr_34.entity.Felt;
 import gui_fields.GUI_Chance;
@@ -10,6 +8,7 @@ import gui_fields.GUI_Jail;
 import gui_fields.GUI_Refuge;
 import gui_fields.GUI_Start;
 import gui_fields.GUI_Street;
+import gui_main.GUI;
 
 /**
  * Opretter spillebrættet med felter for monopoly
@@ -21,6 +20,7 @@ import gui_fields.GUI_Street;
 public class Spillebræt {
 	private GUI_Field[] felter;
 	private int[] lejeListe;
+	GUI gui;
 
 	public Spillebræt() {
 		
@@ -55,7 +55,17 @@ public class Spillebræt {
 			felter[i].setDescription(feltData[i].getBeskrivelse());
 
 		}
-
+		
+		gui = new GUI(felter);
 	}
-
+	
+	public GUI_Field[] getFelter()
+	{
+		return felter;
+	}
+	
+	public void sendBesked(String besked)
+	{
+		gui.showMessage(besked);
+	}
 }
