@@ -14,8 +14,8 @@ public class Felt {
 	private Spiller ejer;
 	private int pris;
 	private Color farve;
-
 	private String titel;
+	
 	public String getTitel() {
 		return titel;
 	}

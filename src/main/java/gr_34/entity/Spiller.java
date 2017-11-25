@@ -11,14 +11,6 @@ public class Spiller {
 	private Konto konto;
 	private Brik brik;
 	private int position;
-	
-	public int getPosition() {
-		return position;
-	}
-
-	public void setPosition(int position) {
-		this.position = position;
-	}
 
 	public Spiller(String navn, int alder, Konto konto, Brik brik) {
 		this.navn = navn;
@@ -57,6 +49,14 @@ public class Spiller {
 	
 	public void setBrik(Brik brik) {
 		this.brik = brik;
+	}
+	
+	public int getPosition() {
+		return position;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
 	}
 
 	@Override
