@@ -47,10 +47,4 @@ public class Felt {
 		this.farve = farve;
 	}
 
-	
-	
-	
-	}
-	
-	
-	
+}

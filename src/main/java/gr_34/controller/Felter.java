@@ -16,7 +16,7 @@ public class Felter {
 		Felt[] felter = new Felt[4];
 		felter[0] = new Felt();
 		felter[0].setTitel("Start");
-		felter[0].setPris(0);
+		felter[0].setPris(-1);
 		felter[0].setBeskrivelse("Spillerstart");
 
 		felter[1] = new Felt();
@@ -31,6 +31,7 @@ public class Felter {
 
 		felter[3] = new Felt();
 		felter[3].setTitel("Chance");
+		felter[3].setPris(-1);
 		felter[3].setBeskrivelse("Chance");
 
 		felter[4] = new Felt();
@@ -46,6 +47,7 @@ public class Felter {
 
 		felter[6] = new Felt();
 		felter[6].setTitel("I fængsel");
+		felter[3].setPris(-1);
 		felter[6].setBeskrivelse("På besøg");
 
 		felter[7] = new Felt();
@@ -60,6 +62,7 @@ public class Felter {
 
 		felter[9] = new Felt();
 		felter[9].setTitel("Chance");
+		felter[3].setPris(-1);
 		felter[9].setBeskrivelse("Chance");
 
 		felter[10] = new Felt();
@@ -90,6 +93,7 @@ public class Felter {
 
 		felter[15] = new Felt();
 		felter[15].setTitel("Chance");
+		felter[3].setPris(-1);
 		felter[15].setBeskrivelse("Chance");
 
 		felter[16] = new Felt();
@@ -104,6 +108,7 @@ public class Felter {
 
 		felter[18] = new Felt();
 		felter[18].setTitel("Gå i fængsel");
+		felter[3].setPris(-1);
 		felter[18].setBeskrivelse("Ryk direkte i fængsel");
 
 		felter[19] = new Felt();
@@ -118,6 +123,7 @@ public class Felter {
 
 		felter[21] = new Felt();
 		felter[21].setTitel("Chance");
+		felter[3].setPris(-1);
 		felter[21].setBeskrivelse("Chance");
 
 		felter[22] = new Felt();
