@@ -1,5 +1,6 @@
 package gr_34.controller;
 
+import gr_34.boundary.Spillebræt;
 import gr_34.boundary.TUI;
 import gr_34.entity.Spillerliste;
 
@@ -16,6 +17,6 @@ public class Controller {
 		TUI.println("*******************************");
 		TUI.print("\t\n");
 		spillerliste.tilføjSpiller(antalSpillere);
-		
+		new Spillebræt();
 	}
 }
