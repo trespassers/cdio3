@@ -42,17 +42,16 @@ public class Spillebræt {
 				felter[i] = new GUI_Jail();
 			else if (feltData[i].getTitel() == "Gå i fængsel")
 				felter[i] = new GUI_Start();
-			// Gadefelter har pris over nul, specielle felter har -1.
-			// Burde egentligt ikke behøve at tjekke prisen her til sidst.
-			else if (feltData[i].getPris() < 0) {
+			else {
 				// Kun gadefelter har priser og definerede farver
 				felter[i] = new GUI_Street();
 				((GUI_Street) felter[i]).setRent("M" + feltData[i].getPris());
 				felter[i].setBackGroundColor(feltData[i].getFarve());
 			}
 
+			System.out.println(feltData[i].getTitel());
 			felter[i].setTitle(feltData[i].getTitel());
-			felter[i].setDescription(feltData[i].getBeskrivelse());
+			//felter[i].setDescription(feltData[i].getBeskrivelse());
 
 		}
 		

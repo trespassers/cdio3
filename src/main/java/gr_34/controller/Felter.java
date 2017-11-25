@@ -13,7 +13,7 @@ public class Felter {
 
 	public static Felt[] getFelter() {
 
-		Felt[] felter = new Felt[4];
+		Felt[] felter = new Felt[24];
 		felter[0] = new Felt();
 		felter[0].setTitel("Start");
 		felter[0].setPris(-1);
@@ -135,7 +135,6 @@ public class Felter {
 		felter[23].setTitel("Strandpromenaden");
 		felter[23].setPris(5);
 		felter[23].setFarve(Color.BLUE);
-
 		return felter;
 	}
 }
