@@ -33,58 +33,68 @@ public class Spil {
 	public void udførSpillerTur(Terning terning, Spiller aktivSpiller)
 	{
 		int slag = terning.getVærdi();
-		
+		String besked = aktivSpiller.getNavn();
+
 		int gammelPosition = aktivSpiller.getPosition();
-		int nyPosition = (gammelPosition + slag) % spillebræt.getFelter().length;
+		int nyPosition = (gammelPosition + slag);
 		
+		if (nyPosition >= spillebræt.getFelter().length)
+		{
+			// TODO send besked EFTER bilen flytter.
+			spillebræt.sendBesked(besked + " har passeret start og modtaget 2M.");
+			aktivSpiller.getKonto().tilføjPenge(2);
+			nyPosition -= spillebræt.getFelter().length;
+		}
+
 		// Fjerner spiller fra forrige felt
 		spillebræt.getFelt(gammelPosition).setCar(aktivSpiller.getGUI_PLayer(), false);
-		
+
 		aktivSpiller.setPosition(nyPosition);
-		
+
 		GUI_Field ramtFelt = spillebræt.getFelter()[nyPosition];
 		String ramtFeltNavn = ramtFelt.getTitle();
-		
-		String besked = "";
+
 
 		if (ramtFeltNavn == "Start")
 		{
-			aktivSpiller.getKonto().tilføjPenge(2);
-			besked = "Du får 2M for at passere start";
+			
 		}
 		else if (ramtFelt instanceof GUI_Chance) {
 			//			Chancekort trukket = chancekortBunke.trækKort();
-			aktivSpiller.getKonto().setPenge(500);
-			besked = "Chancekort out of order. Modtag 500";
+			aktivSpiller.getKonto().tilføjPenge(500);
+			besked += " fandt 500M.";
 		}	
 		else if (ramtFelt instanceof GUI_Refuge)
 			// Parkeringspladsen er gratis?
-			besked = "Gratis parkering.";
+			besked += " parkerer gratis.";
 		else if (ramtFelt instanceof GUI_Jail)
 			// På besøg.
-			besked = "Du er på besøg i fængslet";
+			besked += " er på besøg i fængslet.";
 		else if (ramtFeltNavn == "Gå i fængsel")
 		{
 			// TODO få det her til at virke
 			// Spring tur over, osv. grimt magisk sekstal.
 			aktivSpiller.setPosition(6);
-			besked = "Du ryger direkte i fængsel";
+			besked += " ryger direkte i fængsel.";
 		}
 		else if (ramtFelt instanceof GUI_Street){
 			String ejerNavn = ((GUI_Street) ramtFelt).getOwnerName();
 			int pris = feltData[nyPosition].getPris();
-			
+
 			if (ejerNavn != null)
 			{
 				if (aktivSpiller.getNavn() != ejerNavn)
 				{
 					aktivSpiller.getKonto().fratrækPenge(pris);
 					// TODO Betal anden spiller
-					besked = "Du er landet på " + ramtFelt.getTitle() + " som tilhører " + ejerNavn + ", og har betalt dem " + pris;
+					besked += " er landet på " + ramtFelt.getTitle() +
+							" som tilhører " + ejerNavn +
+							", og har betalt dem " + pris + "M.";
 				}
 				else
 				{
-					besked = "Du er landet på " + ramtFelt.getTitle() + " som tilhører dig";
+					besked += " er landet på " + ramtFelt.getTitle() +
+							" som de selv ejer.";
 				}
 
 			}
@@ -92,12 +102,13 @@ public class Spil {
 			{
 				aktivSpiller.getKonto().fratrækPenge(feltData[nyPosition].getPris());
 				spillebræt.købFelt(nyPosition, aktivSpiller.getNavn());
-				besked = "Du har købt " + feltData[nyPosition].getTitel();
+				besked += " har købt " + feltData[nyPosition].getTitel() +
+						" for " + feltData[nyPosition].getPris() + "M.";
 			}
 		}
 		ramtFelt.setCar(aktivSpiller.getGUI_PLayer(), true);
 		aktivSpiller.opdaterSpiller();
-		if (!besked.equals(""))
+		if (!besked.equals(aktivSpiller.getNavn()))
 			spillebræt.sendBesked(besked);
 
 	}
