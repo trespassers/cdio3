@@ -6,6 +6,8 @@ import java.awt.Color;
  * 
  * @author Burhan 
  * @author Alan
+ * @author Andreas
+ * 
  */
 
 public class Felt {
