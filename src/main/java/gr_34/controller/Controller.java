@@ -7,19 +7,44 @@ import gr_34.entity.Brik;
 import gr_34.entity.Konto;
 import gr_34.entity.Spiller;
 import gr_34.entity.Spillerliste;
+import gr_34.entity.Terning;
+import gr_34.spillogik.Spil;
+import gui_fields.GUI_Player;
 
 public class Controller {
 	private Spillerliste spillerliste;
 	private Spillebræt spillebræt;
+	private Terning terning;
+	private Spil spil;
 
 	public Controller() {
 		spillebræt = new Spillebræt();
+		terning = new Terning();
+		terning.kast();
 	}
 	
 	public void spilkontrol() {
-		spillebræt.sendBesked("Velkommen til Monopoly Junior!!");
+		spillebræt.sendBesked("Velkommen til Monopoly Junior!!");	
+		opretSpillere();
+		spil = new Spil(spillerliste, spillebræt);
+		
+		int nutidigSpillerInt = 0;
+		do {
+		spillebræt.setTerning(terning.kast());
+		spil.udførSpillerTur(terning, spillerliste.getSpiller(nutidigSpillerInt));
+		
+		nutidigSpillerInt = (nutidigSpillerInt + 1) % spillerliste.antalSpillere();
+		} while (true);
+		
+		
+		
+	}
+	
+	private void opretSpillere() {
 		int antalSpillere = spillebræt.hentAntalSpillere();
 		spillerliste = new Spillerliste(antalSpillere);
+		
+		// opretter spillerliste med input fra gui'en
 		for(int i = 0; i < antalSpillere; i++) {
 			int startBeløb;
 			if (antalSpillere == 2)
@@ -54,6 +79,9 @@ public class Controller {
 			
 			Spiller spiller = new Spiller(navn, alder, new Konto(startBeløb), new Brik(farve1, farve2));
 			spillerliste.tilføjSpiller(spiller, i);
+			GUI_Player player = spillebræt.tilføjSpillerTilBræt(spiller);
+			spiller.setGUI_Player(player);
+			spiller.opdaterSpiller();
 		}
 	}
 }

@@ -1,4 +1,7 @@
 package gr_34.entity;
+
+import gui_fields.GUI_Player;
+
 /**
  *
  * @author Sebastian
@@ -11,6 +14,7 @@ public class Spiller {
 	private Konto konto;
 	private Brik brik;
 	private int position;
+	private GUI_Player player;
 
 	public Spiller(String navn, int alder, Konto konto, Brik brik) {
 		this.navn = navn;
@@ -38,17 +42,9 @@ public class Spiller {
 	public Konto getKonto() {
 		return konto;
 	}
-	
-	public void setKonto(Konto konto) {
-		this.konto = konto;
-	}
 
 	public Brik getBrik() {
 		return brik;
-	}
-	
-	public void setBrik(Brik brik) {
-		this.brik = brik;
 	}
 	
 	public int getPosition() {
@@ -57,6 +53,19 @@ public class Spiller {
 
 	public void setPosition(int position) {
 		this.position = position;
+	}
+	
+	public void setGUI_Player(GUI_Player player) {
+		this.player = player;
+	}
+	
+	public GUI_Player getGUI_PLayer()
+	{
+		return player;
+	}
+	
+	public void opdaterSpiller() {
+		player.setBalance(konto.getPenge());
 	}
 
 	@Override

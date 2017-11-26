@@ -22,6 +22,11 @@ public class Spillerliste {
 	public Spiller getSpiller(int index) {
 		return spillere[index];
 	}
+	
+	public int antalSpillere()
+	{
+		return spillere.length;
+	}
 
 	@Override
 	public String toString() {
