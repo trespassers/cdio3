@@ -63,6 +63,22 @@ public class Spillebræt {
 		return felter;
 	}
 	
+	public int hentBilfarve() {
+		return gui.getUserInteger("Vælg bilfarve 1=blå, 2=rød, 3=gul, 4=grøn", 1, 4);
+	}
+	
+	public String hentNavn() {
+		return gui.getUserString("Indtast dit navn: ");
+	}
+	
+	public int hentAlder() {
+		return gui.getUserInteger("Indtast din alder: ");
+	}
+	
+	public int hentAntalSpillere() {
+		return gui.getUserInteger("Vælg antal spillere", 2, 4);
+	}
+	
 	public void sendBesked(String besked)
 	{
 		gui.showMessage(besked);
