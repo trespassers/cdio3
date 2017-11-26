@@ -65,6 +65,11 @@ public class Spillebræt {
 	{
 		return felter;
 	}
+	public GUI_Field getFelt(int index)
+	{
+		return felter[index];
+	}
+	
 	public void købFelt(int index, String køberNavn)
 	{
 		((GUI_Street) felter[index]).setOwnerName(køberNavn);

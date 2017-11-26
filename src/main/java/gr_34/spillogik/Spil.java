@@ -33,9 +33,15 @@ public class Spil {
 	public void udførSpillerTur(Terning terning, Spiller aktivSpiller)
 	{
 		int slag = terning.getVærdi();
-
-		int nyPosition = (aktivSpiller.getPosition() + slag) % spillebræt.getFelter().length;
+		
+		int gammelPosition = aktivSpiller.getPosition();
+		int nyPosition = (gammelPosition + slag) % spillebræt.getFelter().length;
+		
+		// Fjerner spiller fra forrige felt
+		spillebræt.getFelt(gammelPosition).setCar(aktivSpiller.getGUI_PLayer(), false);
+		
 		aktivSpiller.setPosition(nyPosition);
+		
 		GUI_Field ramtFelt = spillebræt.getFelter()[nyPosition];
 		String ramtFeltNavn = ramtFelt.getTitle();
 		
@@ -89,7 +95,6 @@ public class Spil {
 				besked = "Du har købt " + feltData[nyPosition].getTitel();
 			}
 		}
-
 		ramtFelt.setCar(aktivSpiller.getGUI_PLayer(), true);
 		aktivSpiller.opdaterSpiller();
 		if (!besked.equals(""))
