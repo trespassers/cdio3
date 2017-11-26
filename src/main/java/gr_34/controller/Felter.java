@@ -41,7 +41,7 @@ public class Felter {
 		felter[3].setTitel("Chance");
 		felter[3].setPris(-1);
 		felter[3].setBeskrivelse("Tag chancen");
-		felter[3].setSubText("M1");
+		felter[3].setSubText("");
 
 		felter[4] = new Felt();
 		felter[4].setTitel("Slikbutikken");
