@@ -11,6 +11,7 @@ import java.awt.Color;
 public class Felt {
 	
 	private String beskrivelse;
+	private String subText;
 	private Spiller ejer;
 	private int pris;
 	private Color farve;
@@ -46,5 +47,10 @@ public class Felt {
 	public void setFarve(Color farve) {
 		this.farve = farve;
 	}
-
+	public void setSubText(String subText) {
+		this.subText = subText;
+	}
+	public String getSubText() {
+		return subText;
+	}
 }
