@@ -55,7 +55,7 @@ public class Controller {
 				startBeløb = 16;
 			
 			String navn = spillebræt.hentNavn();
-			int alder = spillebræt.hentAlder();
+			//int alder = spillebræt.hentAlder();
 			int farve = spillebræt.hentBilfarve();
 			
 			Color farve1;
@@ -77,7 +77,7 @@ public class Controller {
 				farve2 = Color.white;
 			}
 			
-			Spiller spiller = new Spiller(navn, alder, new Konto(startBeløb), new Brik(farve1, farve2));
+			Spiller spiller = new Spiller(navn, new Konto(startBeløb), new Brik(farve1, farve2));
 			spillerliste.tilføjSpiller(spiller, i);
 			GUI_Player player = spillebræt.tilføjSpillerTilBræt(spiller);
 			spiller.setGUI_Player(player);

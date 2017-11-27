@@ -2,7 +2,6 @@ package gr_34.entity;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 /**
  * Representerer en bunke af chancekort, med

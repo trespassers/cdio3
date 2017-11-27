@@ -13,20 +13,19 @@ import gr_34.entity.Spillerliste;
 import gr_34.entity.Terning;
 import gui_fields.GUI_Chance;
 import gui_fields.GUI_Field;
-import gui_fields.GUI_Jail;
 import gui_fields.GUI_Refuge;
 import gui_fields.GUI_Street;
 
 public class Spil {
-	private Spillerliste spillere;
+	//private Spillerliste spillere;
 	private Spillebræt spillebræt;
-	// private ChancekortBunke chancekortBunke;
+	//private ChancekortBunke chancekortBunke;
 	private Felt[] feltData;
 
 	public Spil(Spillerliste spillere, Spillebræt spillebræt) {
-		this.spillere = spillere;
+		//this.spillere = spillere;
 		this.spillebræt = spillebræt;
-		// this.chancekortBunke = chancekortBunke;
+		//this.chancekortBunke = chancekortBunke;
 		feltData = Felter.getFelter();
 	}
 
@@ -41,7 +40,7 @@ public class Spil {
 		if (nyPosition >= spillebræt.getFelter().length)
 		{
 			// TODO send besked EFTER bilen flytter.
-			spillebræt.sendBesked(besked + " har passeret start og modtaget 2M.");
+			spillebræt.sendBesked(besked + " har passeret start og modtaget M2.");
 			aktivSpiller.getKonto().tilføjPenge(2);
 			nyPosition -= spillebræt.getFelter().length;
 		}
@@ -60,36 +59,39 @@ public class Spil {
 			
 		}
 		else if (ramtFelt instanceof GUI_Chance) {
-			//			Chancekort trukket = chancekortBunke.trækKort();
-			aktivSpiller.getKonto().tilføjPenge(500);
-			besked += " fandt 500M.";
+			// TODO indfør chancekort
+			//Chancekort trukket = chancekortBunke.trækKort();
+			aktivSpiller.getKonto().tilføjPenge(0);
+			besked += " du er landet på chancen, og modtager M1 fra alle";
 		}	
 		else if (ramtFelt instanceof GUI_Refuge)
-			// Parkeringspladsen er gratis?
+			// Parkeringspladsen er gratis.
 			besked += " parkerer gratis.";
-		else if (ramtFelt instanceof GUI_Jail)
+		else if (ramtFelt == spillebræt.getFelt(6))
 			// På besøg.
 			besked += " er på besøg i fængslet.";
-		else if (ramtFeltNavn == "Gå i fængsel")
+		else if (ramtFelt == spillebræt.getFelt(18))
 		{
-			// TODO få det her til at virke
-			// Spring tur over, osv. grimt magisk sekstal.
+			// TODO opdater bil.
 			aktivSpiller.setPosition(6);
+			spillebræt.getFelt(6).setCar(aktivSpiller.getGUI_PLayer(), true);
+			ramtFelt.setCar(aktivSpiller.getGUI_PLayer(), false);
 			besked += " ryger direkte i fængsel.";
 		}
 		else if (ramtFelt instanceof GUI_Street){
 			String ejerNavn = ((GUI_Street) ramtFelt).getOwnerName();
 			int pris = feltData[nyPosition].getPris();
-
+			Spiller ejer = feltData[nyPosition].getEjer();
+			
 			if (ejerNavn != null)
 			{
 				if (aktivSpiller.getNavn() != ejerNavn)
 				{
 					aktivSpiller.getKonto().fratrækPenge(pris);
-					// TODO Betal anden spiller
+					ejer.getKonto().tilføjPenge(pris);
 					besked += " er landet på " + ramtFelt.getTitle() +
 							" som tilhører " + ejerNavn +
-							", og har betalt dem " + pris + "M.";
+							", og har betalt dem M" + pris;
 				}
 				else
 				{
@@ -102,8 +104,9 @@ public class Spil {
 			{
 				aktivSpiller.getKonto().fratrækPenge(feltData[nyPosition].getPris());
 				spillebræt.købFelt(nyPosition, aktivSpiller.getNavn());
+				feltData[nyPosition].setEjer(aktivSpiller);
 				besked += " har købt " + feltData[nyPosition].getTitel() +
-						" for " + feltData[nyPosition].getPris() + "M.";
+						" for M" + feltData[nyPosition].getPris();
 			}
 		}
 		ramtFelt.setCar(aktivSpiller.getGUI_PLayer(), true);

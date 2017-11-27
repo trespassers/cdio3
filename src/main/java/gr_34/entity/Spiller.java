@@ -10,15 +10,15 @@ import gui_fields.GUI_Player;
 
 public class Spiller {
 	private String navn;
-	private int alder;
+	//private int alder;
 	private Konto konto;
 	private Brik brik;
 	private int position;
 	private GUI_Player player;
 
-	public Spiller(String navn, int alder, Konto konto, Brik brik) {
+	public Spiller(String navn, Konto konto, Brik brik) {
 		this.navn = navn;
-		this.alder = alder;
+		//this.alder = alder;
 		this.konto = konto;
 		this.brik = brik;
 	}
@@ -31,13 +31,13 @@ public class Spiller {
 		this.navn = navn;
 	}
 
-	public int getAlder() {
-		return alder;
-	}
-	
-	public void setAlder(int alder) {
-		this.alder = alder;
-	}
+//	public int getAlder() {
+//		return alder;
+//	}
+//	
+//	public void setAlder(int alder) {
+//		this.alder = alder;
+//	}
 	
 	public Konto getKonto() {
 		return konto;
@@ -70,7 +70,7 @@ public class Spiller {
 
 	@Override
 	public String toString() {
-		return "\t\nSpiller: navn=" + navn + ", alder=" + alder + ", konto=" + konto + ", brik=" + brik;
+		return "\t\nSpiller: navn=" + navn + ", konto=" + konto + ", brik=" + brik;
 	}
 
 }

@@ -1,5 +1,7 @@
 package gr_34.boundary;
 
+import java.awt.Color;
+
 import gr_34.controller.Felter;
 import gr_34.entity.Felt;
 import gr_34.entity.Spiller;
@@ -44,7 +46,7 @@ public class Spillebræt {
 			else if (feltData[i].getTitel() == "I fængsel")
 				felter[i] = new GUI_Jail();
 			else if (feltData[i].getTitel() == "Gå i fængsel")
-				felter[i] = new GUI_Street();
+				felter[i] = new GUI_Jail();
 			else {
 				// Kun gadefelter har priser og definerede farver
 				felter[i] = new GUI_Street();
@@ -73,6 +75,7 @@ public class Spillebræt {
 	public void købFelt(int index, String køberNavn)
 	{
 		((GUI_Street) felter[index]).setOwnerName(køberNavn);
+		((GUI_Street) felter[index]).setBorder(Color.RED);
 	}
 	
 	public int hentBilfarve() {
