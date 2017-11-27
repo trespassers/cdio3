@@ -1,5 +1,5 @@
 /**
- * 
+ * @author Sebastian
  * @author PeterTB
  */
 package gr_34.spillogik;
