@@ -1,4 +1,7 @@
 package gr_34.entity;
+
+import gui_fields.GUI_Player;
+
 /**
  *
  * @author Sebastian
@@ -7,14 +10,15 @@ package gr_34.entity;
 
 public class Spiller {
 	private String navn;
-	private int alder;
+	//private int alder;
 	private Konto konto;
 	private Brik brik;
 	private int position;
+	private GUI_Player player;
 
-	public Spiller(String navn, int alder, Konto konto, Brik brik) {
+	public Spiller(String navn, Konto konto, Brik brik) {
 		this.navn = navn;
-		this.alder = alder;
+		//this.alder = alder;
 		this.konto = konto;
 		this.brik = brik;
 	}
@@ -27,28 +31,20 @@ public class Spiller {
 		this.navn = navn;
 	}
 
-	public int getAlder() {
-		return alder;
-	}
-	
-	public void setAlder(int alder) {
-		this.alder = alder;
-	}
+//	public int getAlder() {
+//		return alder;
+//	}
+//	
+//	public void setAlder(int alder) {
+//		this.alder = alder;
+//	}
 	
 	public Konto getKonto() {
 		return konto;
 	}
-	
-	public void setKonto(Konto konto) {
-		this.konto = konto;
-	}
 
 	public Brik getBrik() {
 		return brik;
-	}
-	
-	public void setBrik(Brik brik) {
-		this.brik = brik;
 	}
 	
 	public int getPosition() {
@@ -58,10 +54,23 @@ public class Spiller {
 	public void setPosition(int position) {
 		this.position = position;
 	}
+	
+	public void setGUI_Player(GUI_Player player) {
+		this.player = player;
+	}
+	
+	public GUI_Player getGUI_PLayer()
+	{
+		return player;
+	}
+	
+	public void opdaterSpiller() {
+		player.setBalance(konto.getPenge());
+	}
 
 	@Override
 	public String toString() {
-		return "\t\nSpiller: navn=" + navn + ", alder=" + alder + ", konto=" + konto + ", brik=" + brik;
+		return "\t\nSpiller: navn=" + navn + ", konto=" + konto + ", brik=" + brik;
 	}
 
 }

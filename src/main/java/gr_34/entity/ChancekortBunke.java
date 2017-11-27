@@ -1,6 +1,7 @@
 package gr_34.entity;
 
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Representerer en bunke af chancekort, med
@@ -11,33 +12,20 @@ import java.util.Random;
 
 public class ChancekortBunke {
 
-	private Chancekort[] bunke;
+	private ArrayList<Chancekort> bunke;
 
-	public ChancekortBunke(Chancekort[] bunke) {
+	public ChancekortBunke(ArrayList<Chancekort> bunke) {
 		this.bunke = bunke;
 	}
 
 	
 	public int getLength()
 	{
-		return bunke.length;
+		return bunke.size();
 	}
 	
-	public void bland()
-	{
-		// Kopieret fra løsningsforslag til kortspil lektion 8.
-		Chancekort[] tempBunke = new Chancekort[bunke.length];
-		Random rn = new Random();
-		int count = 0;
-		do
-		{
-			int i = rn.nextInt(bunke.length);
-			if (tempBunke[i] == null) {
-				tempBunke[i] = bunke[count];
-				count++;
-			}
-		} while (count < bunke.length);
-		bunke = tempBunke;
+	public void bland() {
+		Collections.shuffle(bunke);
 	}
 
 	/**
@@ -46,13 +34,13 @@ public class ChancekortBunke {
 	 * @return reference til trukkede kort
 	 */
 	public Chancekort trækKort() {
+		
 		// Tag øverste kort
-		Chancekort trukket = bunke[bunke.length - 1];
+		Chancekort trukket = bunke.get(0);
+		bunke.remove(0);
 		// Læg tilbage i bunden
-		for (int i = bunke.length-1; i > 0; i--) {
-			bunke[i] = bunke[i - 1];
-		}
-		bunke[0] = trukket;
+		bunke.add(bunke.size(), trukket);
+		
 		return trukket;
 	}
 
@@ -60,14 +48,14 @@ public class ChancekortBunke {
 	 * Fjerner nederste kort i bunden, f.eks. hvis fængselsfrikortet lige er blevet
 	 * trukket
 	 */
-	public void fjernNederste() {
-		Chancekort[] mindreBunke = new Chancekort[bunke.length - 1];
-		
-		for (int i = 0; i < bunke.length - 1; i++)
-		{
-			mindreBunke[i] = bunke[i+1];
-		}
-		bunke = mindreBunke;
-	}
+//	public void fjernNederste() {
+//		Chancekort[] mindreBunke = new Chancekort[bunke.length - 1];
+//		
+//		for (int i = 0; i < bunke.length - 1; i++)
+//		{
+//			mindreBunke[i] = bunke[i+1];
+//		}
+//		bunke = mindreBunke;
+//	}
 
 }

@@ -20,7 +20,7 @@ public class Brik {
 		brik = new GUI_Car(farve1, farve2, Type.CAR, Pattern.CHECKERED);
 	}
 
-	public GUI_Car getBrik() {
+	public GUI_Car getCar() {
 		return brik;
 	}
 
