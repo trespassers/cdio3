@@ -22,30 +22,28 @@ public class Controller {
 		terning = new Terning();
 		terning.kast();
 	}
-	
+
 	public void spilkontrol() {
-		spillebræt.sendBesked("Velkommen til Monopoly Junior!!");	
+		spillebræt.sendBesked("Velkommen til Monopoly Junior!!");
 		opretSpillere();
 		spil = new Spil(spillerliste, spillebræt);
-		
-		int nutidigSpillerInt = 0;
+
+		int nutidigSpillerInt = -1;
 		do {
-		spillebræt.setTerning(terning.kast());
-		spil.udførSpillerTur(terning, spillerliste.getSpiller(nutidigSpillerInt));
-		
-		nutidigSpillerInt = (nutidigSpillerInt + 1) % spillerliste.antalSpillere();
-		} while (true);
-		
-		
-		
+			nutidigSpillerInt = (nutidigSpillerInt + 1) % spillerliste.antalSpillere();
+			spillebræt.setTerning(terning.kast());
+			spil.udførSpillerTur(terning, spillerliste.getSpiller(nutidigSpillerInt));
+
+		} while (!spillerliste.getSpiller(nutidigSpillerInt).isHarTabt());
+
 	}
-	
-	private void opretSpillere() {
+
+	public void opretSpillere() {
 		int antalSpillere = spillebræt.hentAntalSpillere();
 		spillerliste = new Spillerliste(antalSpillere);
-		
+
 		// opretter spillerliste med input fra gui'en
-		for(int i = 0; i < antalSpillere; i++) {
+		for (int i = 0; i < antalSpillere; i++) {
 			int startBeløb;
 			if (antalSpillere == 2)
 				startBeløb = 20;
@@ -53,11 +51,11 @@ public class Controller {
 				startBeløb = 18;
 			else
 				startBeløb = 16;
-			
+
 			String navn = spillebræt.hentNavn();
-			//int alder = spillebræt.hentAlder();
+			// int alder = spillebræt.hentAlder();
 			int farve = spillebræt.hentBilfarve();
-			
+
 			Color farve1;
 			Color farve2;
 			if (farve == 1) {
@@ -76,7 +74,7 @@ public class Controller {
 				farve1 = Color.GREEN;
 				farve2 = Color.white;
 			}
-			
+
 			Spiller spiller = new Spiller(navn, new Konto(startBeløb), new Brik(farve1, farve2));
 			spillerliste.tilføjSpiller(spiller, i);
 			GUI_Player player = spillebræt.tilføjSpillerTilBræt(spiller);

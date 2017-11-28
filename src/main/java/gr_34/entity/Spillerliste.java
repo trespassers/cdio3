@@ -27,6 +27,10 @@ public class Spillerliste {
 	{
 		return spillere.length;
 	}
+	
+	public void sorterEfterPenge() {
+		
+	}
 
 	@Override
 	public String toString() {
