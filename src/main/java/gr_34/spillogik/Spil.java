@@ -1,4 +1,5 @@
 /**
+ * 
  * @author Sebastian
  * @author PeterTB
  */
@@ -39,7 +40,6 @@ public class Spil {
 		
 		if (nyPosition >= spillebræt.getFelter().length)
 		{
-			// TODO send besked EFTER bilen flytter.
 			spillebræt.sendBesked(besked + " har passeret start og modtaget M2.");
 			aktivSpiller.getKonto().tilføjPenge(2);
 			nyPosition -= spillebræt.getFelter().length;
@@ -50,7 +50,7 @@ public class Spil {
 
 		aktivSpiller.setPosition(nyPosition);
 
-		GUI_Field ramtFelt = spillebræt.getFelter()[nyPosition];
+		GUI_Field ramtFelt = spillebræt.getFelt(nyPosition);
 		String ramtFeltNavn = ramtFelt.getTitle();
 
 
@@ -72,10 +72,9 @@ public class Spil {
 			besked += " er på besøg i fængslet.";
 		else if (ramtFelt == spillebræt.getFelt(18))
 		{
-			// TODO opdater bil.
-			aktivSpiller.setPosition(6);
-			spillebræt.getFelt(6).setCar(aktivSpiller.getGUI_PLayer(), true);
-			ramtFelt.setCar(aktivSpiller.getGUI_PLayer(), false);
+			nyPosition = 6;
+			ramtFelt = spillebræt.getFelt(nyPosition);
+			aktivSpiller.setPosition(nyPosition);
 			besked += " ryger direkte i fængsel.";
 		}
 		else if (ramtFelt instanceof GUI_Street){

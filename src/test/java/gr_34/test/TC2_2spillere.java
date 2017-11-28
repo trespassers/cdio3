@@ -1,6 +1,6 @@
 package gr_34.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
@@ -21,10 +21,9 @@ public class TC2_2spillere {
 
 	@Test
 	public void tc_2_startbeløb_2_spillere() {
-		Spillerliste l = new Spillerliste();
-		l.tilføjSpiller(2);
+		Spillerliste l = new Spillerliste(2);
 		int expected = new Konto(20).getPenge();
-		int actual = l.getSpillere(0).getKonto().getPenge();
+		int actual = l.getSpiller(0).getKonto().getPenge();
 		assertEquals(expected, actual);
 	}
 }

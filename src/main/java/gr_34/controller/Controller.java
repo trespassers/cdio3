@@ -40,7 +40,7 @@ public class Controller {
 		
 	}
 	
-	private void opretSpillere() {
+	public void opretSpillere() {
 		int antalSpillere = spillebræt.hentAntalSpillere();
 		spillerliste = new Spillerliste(antalSpillere);
 		
