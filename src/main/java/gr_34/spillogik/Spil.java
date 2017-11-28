@@ -1,5 +1,8 @@
 /**
+<<<<<<< HEAD
  * 
+=======
+>>>>>>> 592ab2a8dd19521a8d1c28d1a3fdbf214e6d3af9
  * @author Sebastian
  * @author PeterTB
  */
