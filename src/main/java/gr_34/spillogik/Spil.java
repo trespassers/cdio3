@@ -5,6 +5,8 @@
  */
 package gr_34.spillogik;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import gr_34.boundary.Spillebræt;
 import gr_34.controller.Felter;
 import gr_34.entity.Chancekort;
@@ -18,13 +20,13 @@ import gui_fields.GUI_Refuge;
 import gui_fields.GUI_Street;
 
 public class Spil {
-	//private Spillerliste spillere;
+	private Spillerliste spillere;
 	private Spillebræt spillebræt;
 	//private ChancekortBunke chancekortBunke;
 	private Felt[] feltData;
 
 	public Spil(Spillerliste spillere, Spillebræt spillebræt) {
-		//this.spillere = spillere;
+		this.spillere = spillere;
 		this.spillebræt = spillebræt;
 		//this.chancekortBunke = chancekortBunke;
 		feltData = Felter.getFelter();
@@ -40,7 +42,7 @@ public class Spil {
 		
 		if (nyPosition >= spillebræt.getFelter().length)
 		{
-			spillebræt.sendBesked(besked + " har passeret start og modtaget M2.");
+			spillebræt.sendBesked(besked + " har passeret start og modtaget M2");
 			aktivSpiller.getKonto().tilføjPenge(2);
 			nyPosition -= spillebræt.getFelter().length;
 		}
@@ -59,10 +61,8 @@ public class Spil {
 			
 		}
 		else if (ramtFelt instanceof GUI_Chance) {
-			// TODO indfør chancekort
-			//Chancekort trukket = chancekortBunke.trækKort();
-			aktivSpiller.getKonto().tilføjPenge(0);
-			besked += " du er landet på chancen, og modtager M1 fra alle";
+			aktivSpiller.getKonto().tilføjPenge(1);
+			besked += " er landet på chancen! du modtager M1";
 		}	
 		else if (ramtFelt instanceof GUI_Refuge)
 			// Parkeringspladsen er gratis.
@@ -88,6 +88,7 @@ public class Spil {
 				{
 					aktivSpiller.getKonto().fratrækPenge(pris);
 					ejer.getKonto().tilføjPenge(pris);
+					ejer.opdaterSpiller();
 					besked += " er landet på " + ramtFelt.getTitle() +
 							" som tilhører " + ejerNavn +
 							", og har betalt dem M" + pris;
@@ -112,6 +113,19 @@ public class Spil {
 		aktivSpiller.opdaterSpiller();
 		if (!besked.equals(aktivSpiller.getNavn()))
 			spillebræt.sendBesked(besked);
+		
+		if(aktivSpiller.getKonto().getPenge() == 0) {
+			spillebræt.sendBesked(aktivSpiller.getNavn() + " har tabt spillet..");
+			aktivSpiller.setHarTabt(true);
+			
+			ArrayList<Integer> placeringer = new ArrayList<Integer>();
+			for(int i = 0; i < spillere.antalSpillere(); i++) {
+				placeringer.add(spillere.getSpiller(i).getKonto().getPenge());
+			}
+			
+			Collections.sort(placeringer);
+			spillebræt.sendBesked("Vinderen er spilleren med beløbet på " + placeringer.get(placeringer.size()-1));
+		}
 
 	}
 

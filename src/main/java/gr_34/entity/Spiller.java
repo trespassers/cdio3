@@ -15,6 +15,7 @@ public class Spiller {
 	private Brik brik;
 	private int position;
 	private GUI_Player player;
+	private boolean harTabt = false;
 
 	public Spiller(String navn, Konto konto, Brik brik) {
 		this.navn = navn;
@@ -59,6 +60,14 @@ public class Spiller {
 		this.player = player;
 	}
 	
+	public boolean isHarTabt() {
+		return harTabt;
+	}
+
+	public void setHarTabt(boolean harTabt) {
+		this.harTabt = harTabt;
+	}
+
 	public GUI_Player getGUI_PLayer()
 	{
 		return player;
