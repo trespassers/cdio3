@@ -7,9 +7,9 @@ package gr_34.spillogik;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
 import gr_34.boundary.Spillebræt;
 import gr_34.controller.Felter;
-import gr_34.entity.Chancekort;
 import gr_34.entity.Felt;
 import gr_34.entity.Spiller;
 import gr_34.entity.Spillerliste;
@@ -61,8 +61,14 @@ public class Spil {
 			
 		}
 		else if (ramtFelt instanceof GUI_Chance) {
-			aktivSpiller.getKonto().tilføjPenge(1);
-			besked += " er landet på chancen! du modtager M1";
+			int random = (int) (Math.random()*2)+1;
+			if(random == 1 ) {
+				aktivSpiller.getKonto().tilføjPenge(1);
+				besked += " er landet på chancen! de modtager M1";
+			} else if(random == 2) {
+				aktivSpiller.getKonto().fratrækPenge(1);
+				besked += " er landet på chancen! der trækkes M1 fra kontoen";
+			}
 		}	
 		else if (ramtFelt instanceof GUI_Refuge)
 			// Parkeringspladsen er gratis.
@@ -125,52 +131,6 @@ public class Spil {
 			
 			Collections.sort(placeringer);
 			spillebræt.sendBesked("Vinderen er spilleren med beløbet på " + placeringer.get(placeringer.size()-1));
-		}
-
-	}
-
-	public void udførChancekortEffekt(Chancekort trukketKort, Spiller aktivSpiller) {
-		switch (trukketKort.getEffekt()) {
-		case BetalTo:
-			break;
-		case GratisBrunGul:
-			break;
-		case GratisLyseblå:
-			break;
-		case GratisLyseblåRød:
-			break;
-		case GratisOrange:
-			break;
-		case GratisOrangeGrøn:
-			break;
-		case GratisPinkMørkeblå:
-			break;
-		case GratisRød:
-			break;
-		case GratisSkaterparken:
-			break;
-		case KøbNæsteLedigeBilen:
-			break;
-		case KøbNæsteLedigeRacerbilen:
-			break;
-		case KøbNæsteLedigeTraktoren:
-			break;
-		case KøbNæsteLedigeUFOen:
-			break;
-		case ModtagTo:
-			break;
-		case RykEnEllerNytKort:
-			break;
-		case RykOpTilFem:
-			break;
-		case RykTilStartMedBonus:
-			break;
-		case RykTilStrandpromenaden:
-			break;
-		case TagEnFraAlle:
-			break;
-		default:
-			break;
 		}
 
 	}
