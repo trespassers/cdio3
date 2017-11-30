@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import gr_34.boundary.Spillebræt;
-import gr_34.controller.Felter;
 import gr_34.entity.Felt;
+import gr_34.entity.Felter;
 import gr_34.entity.Spiller;
 import gr_34.entity.Spillerliste;
 import gr_34.entity.Terning;
