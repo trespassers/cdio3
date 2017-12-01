@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import gr_34.entity.Konto;
 
-public class TC_3_4_5 {
+public class TC_2_3_4 {
 
 	@Before
 	public void setUp() throws Exception {
@@ -19,7 +19,7 @@ public class TC_3_4_5 {
 	}
 	
 	@Test
-	public void tc_3_konto_fratræk() {
+	public void tc_2_konto_fratræk() {
 		Konto k = new Konto(20);
 		k.fratrækPenge(10);
 		int expected = 10;
@@ -28,7 +28,7 @@ public class TC_3_4_5 {
 	}
 	
 	@Test
-	public void tc_4_konto_fratræk_i_minus() {
+	public void tc_3_konto_fratræk_i_minus() {
 		Konto k = new Konto(20);
 		k.fratrækPenge(21);
 		int expected = 0;
@@ -37,7 +37,7 @@ public class TC_3_4_5 {
 	}
 
 	@Test
-	public void tc_5_konto_tilføjPenge() {
+	public void tc_4_konto_tilføjPenge() {
 		Konto k = new Konto(20);
 		k.tilføjPenge(10);
 		int expected = 30;

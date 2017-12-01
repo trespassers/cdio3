@@ -1,9 +1,10 @@
 package gr_34.boundary;
 
 import java.awt.Color;
+import java.util.Arrays;
 
-import gr_34.controller.Felter;
 import gr_34.entity.Felt;
+import gr_34.entity.Felter;
 import gr_34.entity.Spiller;
 import gui_fields.GUI_Chance;
 import gui_fields.GUI_Field;
@@ -36,7 +37,6 @@ public class Spillebræt {
 		for (int i = 0; i < feltData.length; i++) {
 			lejeListe[i] = feltData[i].getPris();
 
-			// Kunne også have haft en attribut der bestemte hvad felttypen er.
 			if (feltData[i].getTitel() == "Start")
 				felter[i] = new GUI_Start();
 			else if (feltData[i].getTitel() == "Chance")
@@ -113,4 +113,9 @@ public class Spillebræt {
 	{
 		gui.setDie(værdi);
 	}
+
+	public String toString() {
+		return "Spillebræt [felter=" + Arrays.toString(felter) + "]";
+	}
+	
 }
